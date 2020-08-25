@@ -4,7 +4,7 @@ const userFactory = require('../factories/userFactory');
 
 class CustomPage {
     static async build() {
-        const dev = process.NODE_ENV !== 'production' && process.NODE_ENV !== 'ci';
+        const dev = process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'ci';
         const browserConfig = dev ? { headless: false } : {
             headless: true,
             args: ['--no-sandbox']
