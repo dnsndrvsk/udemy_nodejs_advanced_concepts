@@ -1,10 +1,12 @@
+const credentials = require('../aws.json');
+
 module.exports = {
   googleClientID:
     '70265989829-0t7m7ce5crs6scqd3t0t6g7pv83ncaii.apps.googleusercontent.com',
   googleClientSecret: '8mkniDQOqacXtlRD3gA4n2az',
-//   mongoURI: 'mongodb://admin:wwwwww121212@ds149885.mlab.com:49885/test-db',
-    // mongoURI: 'mongodb://admin:adminpassword@localhost:27017/blogs-db',
     mongoURI: 'mongodb://localhost:27017/blogs-db',
   cookieKey: '123123123',
-  redisUrl: 'redis://localhost:6379'
+  redisUrl: 'redis://localhost:6379',
+  accessKeyId: credentials.accessKeyId,
+  secretAccessKey: credentials.secretAccessKey
 };

@@ -1,5 +1,6 @@
+import { FETCH_BLOG, FETCH_BLOGS, FETCH_USER } from './types';
+
 import axios from 'axios';
-import { FETCH_USER, FETCH_BLOGS, FETCH_BLOG } from './types';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -13,8 +14,20 @@ export const handleToken = token => async dispatch => {
   dispatch({ type: FETCH_USER, payload: res.data });
 };
 
-export const submitBlog = (values, history) => async dispatch => {
-  const res = await axios.post('/api/blogs', values);
+export const submitBlog = (values, file, history) => async dispatch => {
+  let uploadConfig;
+  if (file) {
+    uploadConfig = await axios.get('/api/upload');
+
+    await axios.put(uploadConfig.data.url, file, {
+      headers: {
+        'Content-Type': file.type
+      }
+    });
+  }
+  const res = await axios.post('/api/blogs', {
+    ...values, imageUrl: file ? uploadConfig.data.key : null
+  });
 
   history.push('/blogs');
   dispatch({ type: FETCH_BLOG, payload: res.data });

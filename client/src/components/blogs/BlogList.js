@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import map from 'lodash/map';
-import { connect } from 'react-redux';
+
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { fetchBlogs } from '../../actions';
+import map from 'lodash/map';
 
 class BlogList extends Component {
   componentDidMount() {
@@ -18,6 +19,9 @@ class BlogList extends Component {
               <span className="card-title">{blog.title}</span>
               <p>{blog.content}</p>
             </div>
+            {blog.imageUrl && <div>
+              <img src={`https://my-blog-bucket-udemy.s3.us-east-2.amazonaws.com/${blog.imageUrl}`} style={{ height: 200 }} />
+            </div>}
             <div className="card-action">
               <Link to={`/blogs/${blog._id}`}>Read</Link>
             </div>
