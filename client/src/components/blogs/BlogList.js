@@ -20,7 +20,7 @@ class BlogList extends Component {
               <p>{blog.content}</p>
             </div>
             {blog.imageUrl && <div>
-              <img src={`https://my-blog-bucket-udemy.s3.us-east-2.amazonaws.com/${blog.imageUrl}`} alt="image" style={{ height: 200 }} />
+              <img src={`https://my-blog-bucket-udemy.s3.us-east-2.amazonaws.com/${blog.imageUrl}`} alt="just-an-image" style={{ height: 200 }} />
             </div>}
             <div className="card-action">
               <Link to={`/blogs/${blog._id}`}>Read</Link>

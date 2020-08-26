@@ -12,7 +12,7 @@ class BlogShow extends Component {
       if (this.props.blog.imageUrl) {
           return <img src={
             `https://my-blog-bucket-udemy.s3.us-east-2.amazonaws.com/${this.props.blog.imageUrl}`
-          } alt="image" />
+          } alt="just-an-image" />
       }
   }
 
